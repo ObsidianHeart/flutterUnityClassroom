@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
@@ -6,10 +5,8 @@ using System.Collections.Generic;
 public class CustomizationMenu : MonoBehaviour
 {
     public GameObject menuPanel; // Assign a UI Panel in the Inspector
-    public Button materialOptionButtonPrefab; // Prefab for material option buttons
-    public Button colorOptionButtonPrefab; // Prefab for color option buttons
-    public Transform materialOptionsParent; // Parent transform for material buttons
-    public Transform colorOptionsParent; // Parent transform for color buttons
+    public Button prefabOptionButtonPrefab; // Prefab for prefab option buttons
+    public Transform prefabOptionsParent; // Parent transform for prefab buttons
     public Button saveButton; // Button to save changes
 
     private CustomizableObject currentCustomizableObject;
@@ -37,39 +34,22 @@ public class CustomizationMenu : MonoBehaviour
     {
         ClearOptions();
 
-        // Populate Material Options
-        if (currentCustomizableObject.materialOptions != null)
+        // Populate Prefab Options
+        if (currentCustomizableObject.prefabOptions != null)
         {
-            for (int i = 0; i < currentCustomizableObject.materialOptions.Length; i++)
+            for (int i = 0; i < currentCustomizableObject.prefabOptions.Length; i++)
             {
                 int index = i; // Local copy for closure
-                Button button = Instantiate(materialOptionButtonPrefab, materialOptionsParent);
-                button.GetComponentInChildren<Text>().text = currentCustomizableObject.materialOptions[i].name;
-                button.onClick.AddListener(() => currentCustomizableObject.ApplyMaterial(index));
-            }
-        }
-
-        // Populate Color Options
-        if (currentCustomizableObject.colorOptions != null)
-        {
-            for (int i = 0; i < currentCustomizableObject.colorOptions.Length; i++)
-            {
-                int index = i; // Local copy for closure
-                Button button = Instantiate(colorOptionButtonPrefab, colorOptionsParent);
-                // You might want to set the button's image color to the actual color option
-                button.GetComponentInChildren<Text>().text = "Color " + (i + 1);
-                button.onClick.AddListener(() => currentCustomizableObject.ApplyColor(index));
+                Button button = Instantiate(prefabOptionButtonPrefab, prefabOptionsParent);
+                button.GetComponentInChildren<Text>().text = currentCustomizableObject.prefabOptions[i].name;
+                button.onClick.AddListener(() => currentCustomizableObject.ApplyPrefab(index));
             }
         }
     }
 
     void ClearOptions()
     {
-        foreach (Transform child in materialOptionsParent)
-        {
-            Destroy(child.gameObject);
-        }
-        foreach (Transform child in colorOptionsParent)
+        foreach (Transform child in prefabOptionsParent)
         {
             Destroy(child.gameObject);
         }
@@ -77,13 +57,9 @@ public class CustomizationMenu : MonoBehaviour
 
     void SaveCustomization()
     {
-        // This is where you'd save the current customization to a text file.
-        // For now, let's just log it.
-        string customizationLog = $"{currentCustomizableObject.objectName} customized: Material Index = {currentCustomizableObject.currentMaterialIndex}, Color Index = {currentCustomizableObject.currentColorIndex}";
+        string customizationLog = $"{currentCustomizableObject.objectName} customized: Prefab Index = {currentCustomizableObject.currentPrefabIndex}";
         Debug.Log(customizationLog);
 
-        // In a real application, you would write this to a file.
-        // Example: System.IO.File.AppendAllText("customization_log.txt", customizationLog + "\n");
         System.IO.File.AppendAllText(Application.persistentDataPath + "/customization_log.txt", customizationLog + "\n");
 
         HideMenu();

@@ -1,40 +1,44 @@
-
 using UnityEngine;
 
 public class CustomizableObject : MonoBehaviour
 {
     public string objectName; // e.g., "Chair", "Table", "Whiteboard"
-    public Material[] materialOptions; // Array of materials for customization
-    public Color[] colorOptions; // Array of colors for customization
-    public int currentMaterialIndex = 0;
-    public int currentColorIndex = 0;
+    public GameObject[] prefabOptions; // Array of prefabs for customization (e.g., different chair models)
+    public int currentPrefabIndex = 0;
 
-    private Renderer objectRenderer;
+    [HideInInspector] public Material originalMaterial; // To store the original material for highlighting
 
-    void Awake()
+    public void ApplyPrefab(int index)
     {
-        objectRenderer = GetComponent<Renderer>();
-        if (objectRenderer == null)
+        if (prefabOptions != null && index >= 0 && index < prefabOptions.Length)
         {
-            Debug.LogError("CustomizableObject: No Renderer found on this GameObject.");
-        }
-    }
+            // Store current position and rotation before destroying
+            Vector3 oldPosition = transform.position;
+            Quaternion oldRotation = transform.rotation;
+            Transform oldParent = transform.parent;
 
-    public void ApplyMaterial(int index)
-    {
-        if (objectRenderer != null && materialOptions != null && index >= 0 && index < materialOptions.Length)
-        {
-            objectRenderer.material = materialOptions[index];
-            currentMaterialIndex = index;
-        }
-    }
+            // Instantiate the new prefab
+            GameObject newPrefabInstance = Instantiate(prefabOptions[index], oldPosition, oldRotation);
+            newPrefabInstance.transform.parent = oldParent; // Keep the same parent
 
-    public void ApplyColor(int index)
-    {
-        if (objectRenderer != null && colorOptions != null && index >= 0 && index < colorOptions.Length)
-        {
-            objectRenderer.material.color = colorOptions[index];
-            currentColorIndex = index;
+            // Transfer customization data to the new prefab's CustomizableObject component
+            CustomizableObject newCustomizableObject = newPrefabInstance.GetComponent<CustomizableObject>();
+            if (newCustomizableObject != null)
+            {
+                newCustomizableObject.objectName = objectName;
+                newCustomizableObject.prefabOptions = prefabOptions; // Pass the array of options
+                newCustomizableObject.currentPrefabIndex = index; // Set the current index
+            }
+
+            // Notify ObjectSelection about the prefab swap
+            ObjectSelection objectSelection = FindObjectOfType<ObjectSelection>();
+            if (objectSelection != null)
+            {
+                objectSelection.OnPrefabSwapped(this, newCustomizableObject);
+            }
+
+            // Destroy the old object
+            Destroy(gameObject);
         }
     }
 }
