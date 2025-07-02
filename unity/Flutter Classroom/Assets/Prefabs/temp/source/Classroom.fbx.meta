@@ -3,7 +3,112 @@ guid: d8c08fc00f3200f43af385287135eb9d
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Chrome
+    second: {fileID: 2100000, guid: bc8f8b87583638a4990794635474360c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Desk
+    second: {fileID: 2100000, guid: e55c25251c82ac44b9dd6dc5f865f684, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GrandCasier
+    second: {fileID: 2100000, guid: 4ca0bd7778d42c34a9ec94a99037238f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PlasticBlack
+    second: {fileID: 2100000, guid: 1ffe674b20f244d4d80c665f5f01e7d0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PlasticGrey
+    second: {fileID: 2100000, guid: 84fb0f473d0e54342bcf6955484e75ac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rideau
+    second: {fileID: 2100000, guid: 30568a44883b6954c95ef3caba762dc9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WindowWoodPlate
+    second: {fileID: 2100000, guid: 567fb6566bddb7e469dfdb2101ab8837, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: board
+    second: {fileID: 2100000, guid: 8627c03b4a321f141b92f40efe3a3dad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: casiers
+    second: {fileID: 2100000, guid: 73d488d2979af6c43848e2d7acc060c9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ceilling
+    second: {fileID: 2100000, guid: 0df7862b70a131b4d92483d9efa97e68, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: chair
+    second: {fileID: 2100000, guid: fdaa81bfe3cf6e240b086b3bc7e6489c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: clock
+    second: {fileID: 2100000, guid: bd1ed0275e2e8fd499e8aeecea3848d0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: door
+    second: {fileID: 2100000, guid: f3e90242f1c430840ade30a7e412b945, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: etagere
+    second: {fileID: 2100000, guid: b5e1feab6fa1662469fe959cfce727c4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glass
+    second: {fileID: 2100000, guid: 7b46e6e73b829cc4cb57dfe271c6570a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: godray
+    second: {fileID: 2100000, guid: bc9aa1e9d1dbf404d8e79803d9950eb1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ground
+    second: {fileID: 2100000, guid: b482b97b93fe793429a4c68e5b0fa850, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: neon
+    second: {fileID: 2100000, guid: fde9d76ab8f23ab448d2cf680ff13afd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: radiateur
+    second: {fileID: 2100000, guid: c86a24a08bfb7dd4393e02956a934557, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: teacherDesk
+    second: {fileID: 2100000, guid: cc4cdd03714eccc41ac45d892409cda5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wallConcrete
+    second: {fileID: 2100000, guid: 3cbc1967aa3e64947bbb18329cd9a59a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
