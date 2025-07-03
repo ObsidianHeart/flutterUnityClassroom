@@ -1,86 +1,107 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 5.0f;
     [SerializeField] private float sprintSpeedMultiplier = 1.5f;
+    [SerializeField] private Joystick joystick; // Reference to a UI Joystick for movement
 
     [Header("Look Settings")]
     [SerializeField] private float lookSpeed = 2.0f;
     [SerializeField] private float lookXLimit = 90.0f; // Clamp vertical look
+    [SerializeField] private RectTransform lookTouchArea; // UI area for camera look input
 
     private float rotationX = 0;
+    private Vector2 touchStartPos;
+    private CharacterController characterController;
 
     void Start()
     {
-        // Lock cursor and hide it
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        characterController = GetComponent<CharacterController>();
+        if (characterController == null)
+        {
+            characterController = gameObject.AddComponent<CharacterController>();
+        }
+
+        if (lookTouchArea != null)
+        {
+            EventTrigger trigger = lookTouchArea.gameObject.GetComponent<EventTrigger>();
+            if (trigger == null) trigger = lookTouchArea.gameObject.AddComponent<EventTrigger>();
+
+            EventTrigger.Entry entryPointerDown = new EventTrigger.Entry();
+            entryPointerDown.eventID = EventTriggerType.PointerDown;
+            entryPointerDown.callback.AddListener((data) => { OnPointerDownLookArea((PointerEventData)data); });
+            trigger.triggers.Add(entryPointerDown);
+
+            EventTrigger.Entry entryDrag = new EventTrigger.Entry();
+            entryDrag.eventID = EventTriggerType.Drag;
+            entryDrag.callback.AddListener((data) => { OnDragLookArea((PointerEventData)data); });
+            trigger.triggers.Add(entryDrag);
+        }
     }
 
     void Update()
     {
         HandleMovement();
-        HandleLook();
+        // Look is handled by touch events
     }
 
     void HandleMovement()
     {
         float currentMoveSpeed = moveSpeed;
-        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+        Vector3 moveDirection = Vector3.zero;
+
+        if (joystick != null)
         {
-            currentMoveSpeed *= sprintSpeedMultiplier;
+            moveDirection = new Vector3(joystick.stick.x.ReadValue(), 0, joystick.stick.y.ReadValue());
+        }
+        else
+        {
+            float horizontal = Input.GetAxis("Horizontal");
+            float vertical = Input.GetAxis("Vertical");
+            moveDirection = new Vector3(horizontal, 0, vertical);
         }
 
-        // Get input for movement (WASD)
-        float horizontal = Input.GetAxis("Horizontal"); // A/D keys
-        float vertical = Input.GetAxis("Vertical");     // W/S keys
+        if (moveDirection.sqrMagnitude > 1)
+            moveDirection.Normalize();
 
-        // Calculate movement direction relative to camera's forward/right
-        Vector3 forward = transform.forward;
-        Vector3 right = transform.right;
+        // Move relative to the player's facing direction
+        Vector3 move = transform.TransformDirection(moveDirection) * currentMoveSpeed;
 
-        // Ensure movement is horizontal and not affected by camera pitch
-        forward.y = 0; 
-        right.y = 0;
-        forward.Normalize();
-        right.Normalize();
+        // Apply gravity
+        move.y += Physics.gravity.y * Time.deltaTime;
 
-        Vector3 moveDirection = (forward * vertical + right * horizontal).normalized;
-
-        // Apply movement
-        transform.position += moveDirection * currentMoveSpeed * Time.deltaTime;
-
-        // Optional: Add vertical movement (Q/E or Space/Ctrl)
-        if (Input.GetKey(KeyCode.Space))
-        {
-            transform.position += Vector3.up * currentMoveSpeed * Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.LeftControl))
-        {
-            transform.position += Vector3.down * currentMoveSpeed * Time.deltaTime;
-        }
+        characterController.Move(move * Time.deltaTime);
     }
 
-    void HandleLook()
+    public void OnPointerDownLookArea(PointerEventData eventData)
     {
-        // Get mouse input for looking
-        rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
+        touchStartPos = eventData.position;
+    }
+
+    public void OnDragLookArea(PointerEventData eventData)
+    {
+        Vector2 touchDelta = eventData.delta;
+
+        // Horizontal rotation (Yaw)
+        transform.Rotate(0, touchDelta.x * lookSpeed * 0.1f, 0);
+
+        // Vertical rotation (Pitch)
+        rotationX += -touchDelta.y * lookSpeed * 0.1f;
         rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
 
-        transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
-        transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
-    }
-
-    void OnApplicationFocus(bool hasFocus)
-    {
-        // Re-lock cursor when application gains focus
-        if (hasFocus)
+        // Apply pitch to camera or child object (not the whole body)
+        if (Camera.main != null)
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            Camera.main.transform.localEulerAngles = new Vector3(rotationX, 0, 0);
         }
     }
 }
+
 

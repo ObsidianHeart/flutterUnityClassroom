@@ -115,7 +115,7 @@ public class GameManager : MonoBehaviour
             {
                 // Find the actual model prefab to apply
                 CustomizationManager customizationManager = FindFirstObjectByType<CustomizationManager>();
-                GameObject modelPrefab = customizationManager != null ? customizationManager.GetModelPrefabPublic(objectData.objectType, objectData.modelName) : null;
+                GameObject modelPrefab = customizationManager != null ? customizationManager.GetModelPrefab(objectData.objectType, objectData.modelName) : null;
                 if (modelPrefab != null)
                 {   
                     classroomObjectScript.UpdateModel(modelPrefab, objectData.modelName);

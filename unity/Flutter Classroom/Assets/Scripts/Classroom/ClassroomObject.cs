@@ -39,7 +39,7 @@ public class ClassroomObject : MonoBehaviour
     {
         // This object was clicked, notify the CustomizationManager
         CustomizationManager customizationManager = FindFirstObjectByType<CustomizationManager>();
-        if (customizationManager != null && customizationManager.GetCurrentlySelectedClassroomObject() == this)
+        if (customizationManager != null && customizationManager.currentlySelectedClassroomObject == this)
         {
             customizationManager.SelectClassroomObject(this);
         }
@@ -70,7 +70,7 @@ public class ClassroomObject : MonoBehaviour
 
         // Re-apply highlight if this object was previously selected
         CustomizationManager customizationManager = FindFirstObjectByType<CustomizationManager>();
-        if (customizationManager != null && customizationManager.GetCurrentlySelectedClassroomObject() == this)
+        if (customizationManager != null && customizationManager.currentlySelectedClassroomObject == this)
         {
             SetHighlight(true);
         }

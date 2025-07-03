@@ -11,11 +11,12 @@ public class CustomizationManager : MonoBehaviour
         public List<GameObject> models; // Prefabs of different models for this type
     }
 
-    [SerializeField] private List<ObjectTypeModels> availableCustomizationOptions; // Populated in Inspector
+    // Changed to public for UIManager to access directly for image display
+    public List<ObjectTypeModels> availableCustomizationOptions; // Populated in Inspector
 
     private string selectedObjectType;
     private string selectedModelName;
-    private ClassroomObject currentlySelectedClassroomObject; // The object clicked in the 3D scene
+    public ClassroomObject currentlySelectedClassroomObject; // Changed to public
 
     // Public methods for UIManager to call
     public List<string> GetAvailableObjectTypes()
@@ -43,12 +44,6 @@ public class CustomizationManager : MonoBehaviour
     {
         selectedModelName = modelName;
     }
-
-    public ClassroomObject GetCurrentlySelectedClassroomObject()
-    {
-        return currentlySelectedClassroomObject;
-    }
-
 
     // Method to be called when a ClassroomObject in the scene is clicked
     public void SelectClassroomObject(ClassroomObject obj)
@@ -99,13 +94,7 @@ public class CustomizationManager : MonoBehaviour
         }
     }
 
-    // Make GetModelPrefab public for GameManager access
-    public GameObject GetModelPrefabPublic(string type, string modelName)
-    {
-        return GetModelPrefab(type, modelName);
-    }
-
-    private GameObject GetModelPrefab(string type, string modelName)
+    public GameObject GetModelPrefab(string type, string modelName) // Changed to public
     {
         ObjectTypeModels options = availableCustomizationOptions.FirstOrDefault(o => o.objectType == type);
         if (options != null)
