@@ -529,6 +529,7 @@
 "Library/PackageCache/com.unity.inputsystem/InputSystem/Editor/Analytics/InputBuildAnalytic.cs"
 "Library/PackageCache/com.unity.inputsystem/InputSystem/Editor/Analytics/InputComponentEditorAnalytic.cs"
 "Library/PackageCache/com.unity.inputsystem/InputSystem/Editor/Analytics/InputEditorAnalytics.cs"
+"Library/PackageCache/com.unity.inputsystem/InputSystem/Editor/Analytics/InputExitPlayModeAnalytic.cs"
 "Library/PackageCache/com.unity.inputsystem/InputSystem/Editor/Analytics/OnScreenStickEditorAnalytic.cs"
 "Library/PackageCache/com.unity.inputsystem/InputSystem/Editor/Analytics/PlayerInputEditorAnalytic.cs"
 "Library/PackageCache/com.unity.inputsystem/InputSystem/Editor/Analytics/PlayerInputManagerEditorAnalytic.cs"

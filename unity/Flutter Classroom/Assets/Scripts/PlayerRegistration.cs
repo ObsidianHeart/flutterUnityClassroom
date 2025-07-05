@@ -5,8 +5,8 @@ using TMPro; // Add this for TextMeshPro support
 
 public class PlayerRegistration : MonoBehaviour
 {
-    public TMP_InputField nameInputField; // Changed from InputField to TMP_InputField
-    public TMP_InputField registrationNumberInputField; // Changed from InputField to TMP_InputField
+    public InputField nameInputField; // Changed from InputField to TMP_InputField
+    public InputField registrationNumberInputField; // Changed from InputField to TMP_InputField
     public Button registerButton;
 
     void Start()

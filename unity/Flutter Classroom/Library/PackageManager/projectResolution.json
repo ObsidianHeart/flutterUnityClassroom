@@ -8,6 +8,14 @@
     "E:\\New folder\\Mohab\\CCIT\\AndroidProjects\\unityTest\\unity\\Flutter Classroom\\Packages\\packages-lock.json"
   ],
   "outputs": {
+    "com.unity.2d.sprite@1.0.0": {
+      "name": "com.unity.2d.sprite",
+      "resolvedPath": "E:\\New folder\\Mohab\\CCIT\\AndroidProjects\\unityTest\\unity\\Flutter Classroom\\Library\\PackageCache\\com.unity.2d.sprite",
+      "fingerprint": "0e70656ef5df5c7161c8cfc6f24ab0dde0dc637e",
+      "editorCompatibility": "2019.2.0a1",
+      "version": "1.0.0",
+      "source": "builtin"
+    },
     "com.unity.ai.navigation@2.0.4": {
       "name": "com.unity.ai.navigation",
       "resolvedPath": "E:\\New folder\\Mohab\\CCIT\\AndroidProjects\\unityTest\\unity\\Flutter Classroom\\Library\\PackageCache\\com.unity.ai.navigation",
@@ -40,12 +48,12 @@
       "version": "2.0.22",
       "source": "registry"
     },
-    "com.unity.inputsystem@1.11.1": {
+    "com.unity.inputsystem@1.11.2": {
       "name": "com.unity.inputsystem",
       "resolvedPath": "E:\\New folder\\Mohab\\CCIT\\AndroidProjects\\unityTest\\unity\\Flutter Classroom\\Library\\PackageCache\\com.unity.inputsystem",
-      "fingerprint": "f32e50d372b38a6a40f5382ad8ab0d11ac27b67d",
+      "fingerprint": "3c4a97c3950fef77960981e0fe90613de6e512ee",
       "editorCompatibility": "2019.4.0a1",
-      "version": "1.11.1",
+      "version": "1.11.2",
       "source": "registry"
     },
     "com.unity.multiplayer.center@1.0.0": {
