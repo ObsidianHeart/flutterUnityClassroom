@@ -4,6 +4,7 @@ ScriptsOnlyBuild:
     - ClassroomManager
     - PlayerMovement
     - PlayerRegistration
+    - Readme
     Unity.InputSystem.dll:
     - UnityEngine.InputSystem.InputActionAsset
     - UnityEngine.InputSystem.InputActionReference
@@ -85,7 +86,6 @@ ScriptsOnlyBuild:
     - TMPro.TMP_StyleSheet
     Unity.TextMeshPro.dll:
     - TMPro.TMP_FontAsset
-    - TMPro.TMP_InputField
     - TMPro.TMP_Settings
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
@@ -117,8 +117,9 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
-    - UnityEngine.UI.LayoutElement
-    - UnityEngine.UI.RectMask2D
+    - UnityEngine.UI.InputField
+    - UnityEngine.UI.RawImage
+    - UnityEngine.UI.Text
   serializedClasses:
     Unity.InputSystem:
     - UnityEngine.InputSystem.InputAction
@@ -195,11 +196,6 @@ ScriptsOnlyBuild:
     - TMPro.TMP_Character
     - TMPro.TMP_FontFeatureTable
     - TMPro.TMP_FontWeightPair
-    - TMPro.TMP_InputField/OnChangeEvent
-    - TMPro.TMP_InputField/SelectionEvent
-    - TMPro.TMP_InputField/SubmitEvent
-    - TMPro.TMP_InputField/TextSelectionEvent
-    - TMPro.TMP_InputField/TouchScreenKeyboardEvent
     - TMPro.TMP_Sprite
     - TMPro.TMP_SpriteCharacter
     - TMPro.TMP_SpriteGlyph
@@ -227,6 +223,9 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Button/ButtonClickedEvent
     - UnityEngine.UI.ColorBlock
     - UnityEngine.UI.FontData
+    - UnityEngine.UI.InputField/EndEditEvent
+    - UnityEngine.UI.InputField/OnChangeEvent
+    - UnityEngine.UI.InputField/SubmitEvent
     - UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
     - UnityEngine.UI.Navigation
     - UnityEngine.UI.ScrollRect/ScrollRectEvent
@@ -278,6 +277,18 @@ ScriptsOnlyBuild:
     methodName: ResetDebugManager
   - assembly: Assembly-CSharp
     fullTypeName: PlayerMovement
+    methodName: OnRightButtonDown
+  - assembly: Assembly-CSharp
+    fullTypeName: PlayerMovement
+    methodName: OnRightButtonUp
+  - assembly: Assembly-CSharp
+    fullTypeName: PlayerMovement
+    methodName: OnForwardButtonDown
+  - assembly: Assembly-CSharp
+    fullTypeName: PlayerMovement
+    methodName: OnForwardButtonUp
+  - assembly: Assembly-CSharp
+    fullTypeName: PlayerMovement
     methodName: OnLeftButtonDown
   - assembly: Assembly-CSharp
     fullTypeName: PlayerMovement
@@ -288,18 +299,6 @@ ScriptsOnlyBuild:
   - assembly: Assembly-CSharp
     fullTypeName: PlayerMovement
     methodName: OnBackwardButtonUp
-  - assembly: Assembly-CSharp
-    fullTypeName: PlayerMovement
-    methodName: OnForwardButtonDown
-  - assembly: Assembly-CSharp
-    fullTypeName: PlayerMovement
-    methodName: OnForwardButtonUp
-  - assembly: Assembly-CSharp
-    fullTypeName: PlayerMovement
-    methodName: OnRightButtonDown
-  - assembly: Assembly-CSharp
-    fullTypeName: PlayerMovement
-    methodName: OnRightButtonUp
   sceneClasses:
     Assets/Scenes/ClassroomScene.unity:
     - Class: 1
@@ -335,35 +334,33 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 30200}
+      Script: {instanceID: 30726}
     - Class: 114
-      Script: {instanceID: 30642}
+      Script: {instanceID: 31354}
     - Class: 114
-      Script: {instanceID: 31268}
+      Script: {instanceID: 31504}
     - Class: 114
-      Script: {instanceID: 31416}
+      Script: {instanceID: 31954}
     - Class: 114
-      Script: {instanceID: 31866}
+      Script: {instanceID: 32352}
     - Class: 114
-      Script: {instanceID: 32264}
+      Script: {instanceID: 32968}
     - Class: 114
-      Script: {instanceID: 32876}
+      Script: {instanceID: 34098}
     - Class: 114
-      Script: {instanceID: 34002}
+      Script: {instanceID: 35098}
     - Class: 114
-      Script: {instanceID: 34996}
+      Script: {instanceID: 35988}
     - Class: 114
-      Script: {instanceID: 35882}
+      Script: {instanceID: 36622}
     - Class: 114
-      Script: {instanceID: 36512}
+      Script: {instanceID: 37888}
     - Class: 114
-      Script: {instanceID: 37760}
+      Script: {instanceID: 39672}
     - Class: 114
-      Script: {instanceID: 40146}
+      Script: {instanceID: 40288}
     - Class: 114
-      Script: {instanceID: 40246}
-    - Class: 114
-      Script: {instanceID: 40964}
+      Script: {instanceID: 40392}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -406,125 +403,127 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 30200}
+      Script: {instanceID: 30282}
     - Class: 114
-      Script: {instanceID: 30358}
+      Script: {instanceID: 30442}
     - Class: 114
-      Script: {instanceID: 30598}
+      Script: {instanceID: 30682}
     - Class: 114
-      Script: {instanceID: 30642}
+      Script: {instanceID: 30726}
     - Class: 114
-      Script: {instanceID: 30818}
+      Script: {instanceID: 30902}
     - Class: 114
-      Script: {instanceID: 30968}
+      Script: {instanceID: 31054}
     - Class: 114
-      Script: {instanceID: 31084}
+      Script: {instanceID: 31170}
     - Class: 114
-      Script: {instanceID: 31212}
+      Script: {instanceID: 31366}
     - Class: 114
-      Script: {instanceID: 31280}
+      Script: {instanceID: 31504}
     - Class: 114
-      Script: {instanceID: 31416}
+      Script: {instanceID: 31754}
     - Class: 114
-      Script: {instanceID: 31666}
+      Script: {instanceID: 31954}
     - Class: 114
-      Script: {instanceID: 31866}
+      Script: {instanceID: 32294}
     - Class: 114
-      Script: {instanceID: 32206}
+      Script: {instanceID: 32344}
     - Class: 114
-      Script: {instanceID: 32256}
+      Script: {instanceID: 32352}
     - Class: 114
-      Script: {instanceID: 32264}
+      Script: {instanceID: 32506}
     - Class: 114
-      Script: {instanceID: 32416}
-    - Class: 114
-      Script: {instanceID: 32634}
-    - Class: 114
-      Script: {instanceID: 32720}
-    - Class: 114
-      Script: {instanceID: 32756}
+      Script: {instanceID: 32726}
     - Class: 114
       Script: {instanceID: 32812}
     - Class: 114
-      Script: {instanceID: 32844}
+      Script: {instanceID: 32848}
     - Class: 114
-      Script: {instanceID: 32876}
+      Script: {instanceID: 32904}
     - Class: 114
-      Script: {instanceID: 33706}
+      Script: {instanceID: 32936}
     - Class: 114
-      Script: {instanceID: 34002}
+      Script: {instanceID: 32968}
     - Class: 114
-      Script: {instanceID: 34014}
+      Script: {instanceID: 33802}
     - Class: 114
-      Script: {instanceID: 34696}
+      Script: {instanceID: 34098}
     - Class: 114
-      Script: {instanceID: 34734}
+      Script: {instanceID: 34110}
     - Class: 114
-      Script: {instanceID: 35086}
+      Script: {instanceID: 34666}
     - Class: 114
-      Script: {instanceID: 35148}
+      Script: {instanceID: 34796}
     - Class: 114
-      Script: {instanceID: 35222}
+      Script: {instanceID: 34834}
     - Class: 114
-      Script: {instanceID: 35302}
+      Script: {instanceID: 35036}
     - Class: 114
-      Script: {instanceID: 35410}
+      Script: {instanceID: 35098}
     - Class: 114
-      Script: {instanceID: 35992}
+      Script: {instanceID: 35188}
     - Class: 114
-      Script: {instanceID: 36170}
+      Script: {instanceID: 35250}
     - Class: 114
-      Script: {instanceID: 36266}
+      Script: {instanceID: 35324}
     - Class: 114
-      Script: {instanceID: 36268}
+      Script: {instanceID: 35404}
     - Class: 114
-      Script: {instanceID: 36512}
+      Script: {instanceID: 35512}
     - Class: 114
-      Script: {instanceID: 37222}
+      Script: {instanceID: 36098}
     - Class: 114
-      Script: {instanceID: 37256}
+      Script: {instanceID: 36280}
     - Class: 114
-      Script: {instanceID: 37760}
+      Script: {instanceID: 36376}
     - Class: 114
-      Script: {instanceID: 37782}
+      Script: {instanceID: 36378}
     - Class: 114
-      Script: {instanceID: 38732}
+      Script: {instanceID: 36622}
     - Class: 114
-      Script: {instanceID: 39138}
+      Script: {instanceID: 37346}
     - Class: 114
-      Script: {instanceID: 39190}
+      Script: {instanceID: 37888}
     - Class: 114
-      Script: {instanceID: 39460}
+      Script: {instanceID: 37910}
     - Class: 114
-      Script: {instanceID: 39532}
+      Script: {instanceID: 38864}
     - Class: 114
-      Script: {instanceID: 39622}
+      Script: {instanceID: 39274}
     - Class: 114
-      Script: {instanceID: 40034}
+      Script: {instanceID: 39326}
     - Class: 114
-      Script: {instanceID: 40144}
+      Script: {instanceID: 39600}
     - Class: 114
-      Script: {instanceID: 40146}
+      Script: {instanceID: 39672}
     - Class: 114
-      Script: {instanceID: 40162}
+      Script: {instanceID: 39762}
     - Class: 114
-      Script: {instanceID: 40246}
+      Script: {instanceID: 40176}
     - Class: 114
-      Script: {instanceID: 40380}
+      Script: {instanceID: 40286}
     - Class: 114
-      Script: {instanceID: 40464}
+      Script: {instanceID: 40288}
     - Class: 114
-      Script: {instanceID: 40492}
+      Script: {instanceID: 40304}
     - Class: 114
-      Script: {instanceID: 40644}
+      Script: {instanceID: 40392}
     - Class: 114
-      Script: {instanceID: 40882}
+      Script: {instanceID: 40526}
     - Class: 114
-      Script: {instanceID: 40964}
+      Script: {instanceID: 40610}
     - Class: 114
-      Script: {instanceID: 41176}
+      Script: {instanceID: 40638}
     - Class: 114
-      Script: {instanceID: 41342}
+      Script: {instanceID: 40790}
+    - Class: 114
+      Script: {instanceID: 41030}
+    - Class: 114
+      Script: {instanceID: 41112}
+    - Class: 114
+      Script: {instanceID: 41328}
+    - Class: 114
+      Script: {instanceID: 41496}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -928,7 +927,7 @@ ScriptsOnlyBuild:
     className: ColorLookup
   - hash:
       serializedVersion: 2
-      Hash: 7a217849c119943d05a73ad8a81d4758
+      Hash: bbe549b2bbfff2027291b50817dcfe4a
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: PlayerRegistration
@@ -2292,4 +2291,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/RegistrationScene.unity
   - Assets/Scenes/ClassroomScene.unity
-  playerPath: E:/New folder/Mohab/CCIT/AndroidProjects/unityTest/unity/Flutter Classroom/ClassRoomProject1.apk
+  playerPath: E:/New folder/Mohab/CCIT/AndroidProjects/unityTest/unity/Flutter Classroom/Builds

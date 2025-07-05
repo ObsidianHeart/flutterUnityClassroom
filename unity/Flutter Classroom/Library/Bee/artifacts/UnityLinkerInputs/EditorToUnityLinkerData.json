@@ -115,6 +115,13 @@
             "usedInScenes": []
         },
         {
+            "managedAssemblyName": "Assembly-CSharp.dll",
+            "nativeClass": "",
+            "fullManagedTypeName": "Readme",
+            "moduleName": "",
+            "usedInScenes": []
+        },
+        {
             "managedAssemblyName": "",
             "nativeClass": "ResourceManager",
             "fullManagedTypeName": "",
@@ -160,13 +167,6 @@
             "managedAssemblyName": "Unity.TextMeshPro.dll",
             "nativeClass": "",
             "fullManagedTypeName": "TMPro.TMP_FontAsset",
-            "moduleName": "",
-            "usedInScenes": []
-        },
-        {
-            "managedAssemblyName": "Unity.TextMeshPro.dll",
-            "nativeClass": "",
-            "fullManagedTypeName": "TMPro.TMP_InputField",
             "moduleName": "",
             "usedInScenes": []
         },
@@ -1103,6 +1103,13 @@
         {
             "managedAssemblyName": "UnityEngine.UI.dll",
             "nativeClass": "",
+            "fullManagedTypeName": "UnityEngine.UI.InputField",
+            "moduleName": "",
+            "usedInScenes": []
+        },
+        {
+            "managedAssemblyName": "UnityEngine.UI.dll",
+            "nativeClass": "",
             "fullManagedTypeName": "UnityEngine.UI.LayoutElement",
             "moduleName": "",
             "usedInScenes": []
@@ -1117,7 +1124,7 @@
         {
             "managedAssemblyName": "UnityEngine.UI.dll",
             "nativeClass": "",
-            "fullManagedTypeName": "UnityEngine.UI.RectMask2D",
+            "fullManagedTypeName": "UnityEngine.UI.RawImage",
             "moduleName": "",
             "usedInScenes": []
         },

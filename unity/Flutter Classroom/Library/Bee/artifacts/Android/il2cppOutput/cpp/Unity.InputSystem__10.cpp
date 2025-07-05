@@ -1798,9 +1798,21 @@ struct TriggerState_t99B6AEA05EECEE1FEE7B60C2ABA73FA03685F38D
 					char ___m_LastCompletedInUpdate_OffsetPadding_forAlignmentOnly[48];
 					uint32_t ___m_LastCompletedInUpdate_forAlignmentOnly;
 				};
+				#pragma pack(push, tp, 1)
+				struct
+				{
+					char ___m_Frame_OffsetPadding[52];
+					int32_t ___m_Frame;
+				};
+				#pragma pack(pop, tp)
+				struct
+				{
+					char ___m_Frame_OffsetPadding_forAlignmentOnly[52];
+					int32_t ___m_Frame_forAlignmentOnly;
+				};
 			};
 		};
-		uint8_t TriggerState_t99B6AEA05EECEE1FEE7B60C2ABA73FA03685F38D__padding[52];
+		uint8_t TriggerState_t99B6AEA05EECEE1FEE7B60C2ABA73FA03685F38D__padding[56];
 	};
 };
 #pragma pack(pop, tp)

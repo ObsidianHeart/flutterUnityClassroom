@@ -117,7 +117,7 @@ static const int32_t s_InvokerIndices[45] =
 	16902,
 	17024,
 	12701,
-	14434,
+	14433,
 	13456,
 	4532,
 	2009,
@@ -133,7 +133,7 @@ static const int32_t s_InvokerIndices[45] =
 	17145,
 	4110,
 	3376,
-	13986,
+	13985,
 	13293,
 	11351,
 	11532,
@@ -150,8 +150,8 @@ static const int32_t s_InvokerIndices[45] =
 	11532,
 	11532,
 	6274,
-	14202,
-	14206,
+	14201,
+	14205,
 };
 IL2CPP_EXTERN_C const Il2CppCodeGenModule g_UnityEngine_TerrainModule_CodeGenModule;
 const Il2CppCodeGenModule g_UnityEngine_TerrainModule_CodeGenModule = 
