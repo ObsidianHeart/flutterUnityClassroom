@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
@@ -81,14 +80,31 @@ public class ClassroomManager : MonoBehaviour
             };
 
             string json = JsonUtility.ToJson(data, true);
-            string filePath = Application.persistentDataPath + "/player_data.json";
-            File.WriteAllText(filePath, json);
+            string filePath = "";
 
-            Debug.Log("Player data saved to: " + filePath);
+#if UNITY_ANDROID && !UNITY_EDITOR
+            // On Android, save to the public Downloads folder
+            filePath = "/storage/emulated/0/Download/player_data.json";
+#elif UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN
+            // On Windows, save to the user's Downloads folder
+            string downloadsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.UserProfile) + "\\Downloads";
+            filePath = Path.Combine(downloadsPath, "player_data.json");
+#else
+            // Fallback to persistentDataPath
+            filePath = Application.persistentDataPath + "/player_data.json";
+#endif
+
+            try
+            {
+                File.WriteAllText(filePath, json);
+                Debug.Log("Player data saved to: " + filePath);
+            }
+            catch (System.Exception ex)
+            {
+                Debug.LogError("Failed to save player data: " + ex.Message);
+            }
+
             Debug.Log("Thanks for playing!");
-
-            // In a real Android app, you might transition to a 'Thanks' scene and then quit.
-            // For simplicity, we'll just quit the application here.
             Application.Quit();
         }
         else

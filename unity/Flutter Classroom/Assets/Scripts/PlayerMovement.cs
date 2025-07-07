@@ -1,9 +1,7 @@
 using UnityEngine;
-
-/// <summary>
 /// This script handles player movement using on-screen buttons and rotation via screen swipes.
 /// Attach this script to your player GameObject in Unity.
-/// </summary>
+
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement Settings")]
@@ -20,73 +18,38 @@ public class PlayerMovement : MonoBehaviour
     private bool moveLeft;
     private bool moveRight;
 
-    /// <summary>
-    /// Called when the "Forward" button is pressed down.
-    /// </summary>
     public void OnForwardButtonDown()
     {
         moveForward = true;
     }
-
-    /// <summary>
-    /// Called when the "Forward" button is released.
-    /// </summary>
     public void OnForwardButtonUp()
     {
         moveForward = false;
     }
-
-    /// <summary>
-    /// Called when the "Backward" button is pressed down.
-    /// </summary>
     public void OnBackwardButtonDown()
     {
         moveBackward = true;
     }
-
-    /// <summary>
-    /// Called when the "Backward" button is released.
-    /// </summary>
     public void OnBackwardButtonUp()
     {
         moveBackward = false;
     }
-
-    /// <summary>
-    /// Called when the "Left" button is pressed down.
-    /// </summary>
     public void OnLeftButtonDown()
     {
         moveLeft = true;
     }
-
-    /// <summary>
-    /// Called when the "Left" button is released.
-    /// </summary>
     public void OnLeftButtonUp()
     {
         moveLeft = false;
     }
-
-    /// <summary>
-    /// Called when the "Right" button is pressed down.
-    /// </summary>
     public void OnRightButtonDown()
     {
         moveRight = true;
     }
-
-    /// <summary>
-    /// Called when the "Right" button is released.
-    /// </summary>
     public void OnRightButtonUp()
     {
         moveRight = false;
     }
-
-    /// <summary>
-    /// Update is called once per frame. It handles continuous movement and touch-based rotation.
-    /// </summary>
     void Update()
     {
         // --- Handle Player Movement ---
@@ -96,20 +59,17 @@ public class PlayerMovement : MonoBehaviour
         if (moveBackward) currentMovement += Vector3.back;
         if (moveLeft) currentMovement += Vector3.left;
         if (moveRight) currentMovement += Vector3.right;
-
         // Normalize the vector if moving diagonally to prevent faster movement.
         // If the magnitude is greater than 1 (e.g., moving forward and right), normalize it.
         if (currentMovement.magnitude > 1f)
         {
             currentMovement.Normalize();
         }
-
         // Apply movement relative to the player's local space (its own forward, back, left, right).
         if (currentMovement != Vector3.zero)
         {
             transform.Translate(currentMovement * moveSpeed * Time.deltaTime, Space.Self);
         }
-
         // --- Handle Player Rotation (Swipe) ---
         // Check if there's at least one touch on the screen.
         if (Input.touchCount > 0)

@@ -2291,4 +2291,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/RegistrationScene.unity
   - Assets/Scenes/ClassroomScene.unity
-  playerPath: E:/New folder/Mohab/CCIT/AndroidProjects/unityTest/unity/Flutter Classroom/Builds
+  playerPath: E:/New folder/Mohab/CCIT/AndroidProjects/unityTest/unity/Flutter Classroom/ClassroomProject.apk
